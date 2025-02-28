@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+</head>
+<body>
+    <input type="text" id="tarea" placeholder="Escribe una tarea">
+    <button id="agregar">Agregar</button>
+    <ul id="lista"></ul>
+
+    <script>
+        document.getElementById('agregar').addEventListener('click', function() {
+            const tareaTexto = document.getElementById('tarea').value;
+            if (tareaTexto !== '') {
+                const nuevaTarea = document.createElement('li');
+                nuevaTarea.textContent = tareaTexto;
+
+                const botonEliminar = document.createElement('button');
+                botonEliminar.textContent = 'Eliminar';
+                botonEliminar.addEventListener('click', function() {
+                    nuevaTarea.remove();
+                });
+
+                nuevaTarea.appendChild(botonEliminar);
+                document.getElementById('lista').appendChild(nuevaTarea);
+
+                document.getElementById('tarea').value = ''; // Limpiar el campo de entrada
+            }
+        });
+    </script>
+</body>
+</html>
